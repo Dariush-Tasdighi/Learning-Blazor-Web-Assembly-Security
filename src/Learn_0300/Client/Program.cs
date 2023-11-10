@@ -10,7 +10,20 @@ builder.RootComponents.Add<Microsoft.AspNetCore
 	.Components.Web.HeadOutlet>(selector: "head::after");
 
 builder.Services.AddOptions();
-builder.Services.AddAuthorizationCore();
+
+// If we do not have Policy!
+//builder.Services.AddAuthorizationCore();
+
+// If we have Policy!
+builder.Services.AddAuthorizationCore(options =>
+{
+	options.AddPolicy("CanBuy", policy =>
+		policy.RequireClaim("Over21"));
+
+	options.AddPolicy("CanDelete", policy =>
+		policy.RequireRole("Administrator"));
+});
+
 builder.Services.AddScoped
 	<Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider,
 	Infrastructure.CustomAuthenticationStateProvider>();

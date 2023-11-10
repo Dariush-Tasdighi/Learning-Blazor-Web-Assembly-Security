@@ -12,6 +12,7 @@ public class CustomAuthenticationStateProvider :
 		<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>
 		GetAuthenticationStateAsync()
 	{
+		// Anonymous
 		var claimsIdentity =
 			new System.Security.Claims.ClaimsIdentity();
 
