@@ -1,0 +1,20 @@
+﻿@page "/authentication/logout"
+@inject NavigationManager navigationManager
+@inject Infrastructure.CustomAuthenticationStateProvider customAuthenticationStateProvider
+
+<PageTitle>Logout</PageTitle>
+
+<h1>
+	Logout
+</h1>
+
+<button type="button" class="btn btn-danger" @onclick="@LogoutClick">Logout</button>
+
+@code
+{
+	async Task LogoutClick()
+	{
+		// await customAuthenticationStateProvider.Logout();
+		navigationManager.NavigateTo(uri: "/Index");
+	}
+}
