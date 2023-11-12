@@ -13,7 +13,7 @@
 </Router>
 *@
 
-@* Update _Imports.razor *@
+@* Update File: _Imports.razor *@
 @*
 	@using Microsoft.AspNetCore.Components.Authorization
  *@
@@ -28,7 +28,7 @@
 					</p>
 				</Authorizing>
 				<NotAuthorized>
-					@if (context.User.Identity?.IsAuthenticated != true)
+					@if (context.User.Identity?.IsAuthenticated == false)
 					{
 						<RedirectToLogin />
 					}

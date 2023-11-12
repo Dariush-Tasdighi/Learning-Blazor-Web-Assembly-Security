@@ -1,4 +1,8 @@
 ﻿@page "/page4"
+@* @attribute [Authorize] *@
+@* @attribute [Authorize(Roles = "Administrator")] *@
+@* @attribute [Authorize(Roles = "Administrator, Supervisor")] *@
+@* @attribute [Authorize(Policy = "Over21")] *@
 
 <PageTitle>Page (4)</PageTitle>
 

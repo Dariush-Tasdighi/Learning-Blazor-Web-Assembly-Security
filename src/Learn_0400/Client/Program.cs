@@ -11,17 +11,13 @@ builder.RootComponents.Add<Microsoft.AspNetCore
 
 builder.Services.AddOptions();
 
-// If we do not have Policy!
-//builder.Services.AddAuthorizationCore();
-
-// If we have Policy!
 builder.Services.AddAuthorizationCore(options =>
 {
-	options.AddPolicy("CanBuy", policy =>
-		policy.RequireClaim("Over21"));
+	options.AddPolicy(name: "CanBuy",
+		configurePolicy: policy => policy.RequireClaim(claimType: "Over21"));
 
-	options.AddPolicy("CanDelete", policy =>
-		policy.RequireRole("Administrator"));
+	options.AddPolicy(name: "CanDelete",
+		configurePolicy: policy => policy.RequireRole(roles: "Administrator"));
 });
 
 builder.Services.AddScoped

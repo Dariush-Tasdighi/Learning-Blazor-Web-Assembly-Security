@@ -49,13 +49,14 @@ public class CustomAuthenticationStateProvider :
 		//	new System.Security.Claims.ClaimsIdentity(claims: claims);
 
 		// دستور ذیل کار می‌کند
-		//var claimsIdentity =
-		//	new System.Security.Claims.ClaimsIdentity(authenticationType: "jwt");
+		var claimsIdentity =
+			new System.Security.Claims
+			.ClaimsIdentity(authenticationType: "googooli");
 
 		// دستور ذیل کار می‌کند
-		var claimsIdentity =
-			new System.Security.Claims.ClaimsIdentity
-			(claims: claims, authenticationType: "googooli");
+		//var claimsIdentity =
+		//	new System.Security.Claims.ClaimsIdentity
+		//	(claims: claims, authenticationType: "googooli");
 		// **************************************************
 		// **************************************************
 		// **************************************************
@@ -113,8 +114,8 @@ public class CustomAuthenticationStateProvider :
 
 //		claims.Add(item: claim);
 
-//		claim = new System.Security.Claims
-//			.Claim(type: System.Security.Claims.ClaimTypes.Name, value: "DariushTasdighi");
+//		claim = new System.Security.Claims.Claim
+//			(type: System.Security.Claims.ClaimTypes.Name, value: "DariushTasdighi");
 
 //		claims.Add(item: claim);
 //		// **************************************************
@@ -185,6 +186,11 @@ public class CustomAuthenticationStateProvider :
 //			(type: System.Security.Claims.ClaimTypes.Role, value: "Administrator");
 
 //		claims.Add(item: claim);
+
+//		//claim = new System.Security.Claims.Claim
+//		//	(type: System.Security.Claims.ClaimTypes.Role, value: "Supervisor");
+
+//		//claims.Add(item: claim);
 //		// **************************************************
 
 //		var claimsIdentity =
