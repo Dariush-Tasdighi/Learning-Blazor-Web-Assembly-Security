@@ -1,6 +1,6 @@
 ﻿@page "/authentication/logout"
 @inject NavigationManager navigationManager
-@inject Providers.CustomAuthenticationStateProvider customAuthenticationStateProvider
+@*@inject Providers.CustomAuthenticationStateProvider customAuthenticationStateProvider*@
 
 <PageTitle>Logout</PageTitle>
 
@@ -8,13 +8,17 @@
 	Logout
 </h1>
 
-<button type="button" class="btn btn-danger" @onclick="@LogoutClick">Logout</button>
+<button type="button" class="btn btn-danger" @onclick="@LogoutAsync">Logout</button>
 
 @code
 {
-	async Task LogoutClick()
+	public async Task LogoutAsync()
 	{
-		// await customAuthenticationStateProvider.Logout();
-		navigationManager.NavigateTo(uri: "/Index");
+		// await customAuthenticationStateProvider.LogoutAsync();
+
+		navigationManager.NavigateTo
+			(uri: string.Empty, forceLoad: false);
+
+		await Task.CompletedTask;
 	}
 }

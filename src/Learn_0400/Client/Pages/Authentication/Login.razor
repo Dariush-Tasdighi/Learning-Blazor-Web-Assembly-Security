@@ -1,7 +1,24 @@
 ﻿@page "/authentication/login"
+@inject NavigationManager navigationManager
+@*@inject Providers.CustomAuthenticationStateProvider customAuthenticationStateProvider*@
 
 <PageTitle>Login</PageTitle>
 
 <h1>
 	Login
 </h1>
+
+<button type="button" class="btn btn-primary" @onclick="LoginAsync">Login</button>
+
+@code
+{
+	public async Task LoginAsync()
+	{
+		// await customAuthenticationStateProvider.LoginAsync(jwtToken: jwtToken);
+
+		navigationManager.NavigateTo
+			(uri: string.Empty, forceLoad: false);
+
+		await Task.CompletedTask;
+	}
+}

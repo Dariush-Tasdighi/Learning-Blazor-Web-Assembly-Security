@@ -1,0 +1,102 @@
+﻿@page "/page4"
+
+<PageTitle>Page (4)</PageTitle>
+
+<h1>
+	Page (4)
+</h1>
+
+<h3>
+	Part (1)
+</h3>
+
+<AuthorizeView>
+	<p>Hello, @(context.User.Identity?.Name)!</p>
+</AuthorizeView>
+
+<h3>
+	Part (2)
+</h3>
+
+<AuthorizeView>
+	<Authorized>
+		<p>Hello, @(context.User.Identity?.Name)!</p>
+	</Authorized>
+	<NotAuthorized>
+		<p>You're not authorized!</p>
+	</NotAuthorized>
+</AuthorizeView>
+
+<h3>
+	Part (3)
+</h3>
+
+<AuthorizeView>
+	<Authorized>
+		<p>Hello, @(context.User.Identity?.Name)!</p>
+		<p><button @onclick="SecureMethod">Authorized Only Button</button></p>
+	</Authorized>
+	<NotAuthorized>
+		<p>You're not authorized!</p>
+	</NotAuthorized>
+</AuthorizeView>
+
+<h3>
+	Part (4)
+</h3>
+
+<AuthorizeView Roles="Administrator, Supervisor">
+	<p>You have an 'Administrator' or 'Supervisor' role claim.</p>
+</AuthorizeView>
+
+<h3>
+	Part (5)
+</h3>
+
+<AuthorizeView Roles="Administrator">
+	<p>User: @context.User</p>
+	<p>You have the 'Administrator' role claim.</p>
+	<AuthorizeView Roles="Supervisor" Context="innerContext">
+		<p>User: @innerContext.User</p>
+		<p>You have both 'Administrator' and 'Supervisor' role claims.</p>
+	</AuthorizeView>
+</AuthorizeView>
+
+<h3>
+	Part (6)
+</h3>
+
+<AuthorizeView Policy="CanBuy">
+	<p>You satisfy the 'CanBuy' policy.</p>
+</AuthorizeView>
+
+<h3>
+	Part (7)
+</h3>
+
+<AuthorizeView Policy="CanBuy">
+	<AuthorizeView Policy="CanDelete" Context="innerContext">
+		<p>You satisfy the 'CanBuy' and 'CanDelete' policies.</p>
+	</AuthorizeView>
+</AuthorizeView>
+
+<h3>
+	Part (8)
+</h3>
+
+<AuthorizeView>
+	<Authorized>
+		<p>Hello, @(context.User.Identity?.Name)!</p>
+	</Authorized>
+	<Authorizing>
+		<p>You can only see this content while authentication is in progress.</p>
+	</Authorizing>
+</AuthorizeView>
+
+@code {
+
+	private void SecureMethod()
+	{
+	}
+
+}
