@@ -14,8 +14,7 @@
 {
 	public async Task LogoutAsync()
 	{
-		await
-		customAuthenticationStateProvider.LogoutAsync();
+		await customAuthenticationStateProvider.LogoutAsync();
 
 		navigationManager.NavigateTo
 			(uri: string.Empty, forceLoad: false);

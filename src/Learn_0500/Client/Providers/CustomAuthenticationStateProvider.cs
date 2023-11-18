@@ -41,7 +41,7 @@ public class CustomAuthenticationStateProvider :
 
 		System.Security.Claims.ClaimsIdentity claimsIdentity;
 
-		if(claims is null)
+		if (claims is null)
 		{
 			// Anonymous
 			claimsIdentity =
@@ -73,7 +73,7 @@ public class CustomAuthenticationStateProvider :
 
 	public async System.Threading.Tasks.Task<bool> LoginAsync(string? jwtToken)
 	{
-		if(string.IsNullOrWhiteSpace(value: jwtToken) == false)
+		if (string.IsNullOrWhiteSpace(value: jwtToken) == false)
 		{
 			await StorageService.SetItemAsync(key: TokenKeyName, data: jwtToken);
 
@@ -115,6 +115,7 @@ public class CustomAuthenticationStateProvider :
 			return null;
 		}
 
+		// **************************************************
 		var result =
 			new System.Collections.Generic.List
 			<System.Security.Claims.Claim>();
@@ -139,11 +140,14 @@ public class CustomAuthenticationStateProvider :
 
 			result.Add(item: claim);
 		}
+		// **************************************************
 
+		// **************************************************
 		//var result =
 		//	keyValuePairs.Select(current =>
 		//		new System.Security.Claims.Claim
 		//		(current.Key, current.Key.ToString()));
+		// **************************************************
 
 		return result;
 	}

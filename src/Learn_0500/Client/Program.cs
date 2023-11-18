@@ -1,5 +1,4 @@
 using Blazored.LocalStorage;
-using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder =
@@ -32,7 +31,8 @@ builder.Services.AddAuthorizationCore(options =>
 
 // New
 builder.Services.AddScoped<Providers.CustomAuthenticationStateProvider>();
-builder.Services.AddScoped<AuthenticationStateProvider>
+builder.Services.AddScoped
+	<Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>
 	(current => current.GetRequiredService<Providers.CustomAuthenticationStateProvider>());
 
 builder.Services.AddScoped
