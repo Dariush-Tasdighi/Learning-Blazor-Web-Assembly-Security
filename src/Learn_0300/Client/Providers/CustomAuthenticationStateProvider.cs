@@ -1,5 +1,5 @@
-﻿namespace Infrastructure;
-//namespace Client.Infrastructure;
+﻿namespace Providers;
+//namespace Client.Providers;
 
 public class CustomAuthenticationStateProvider :
 	Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider
@@ -17,10 +17,13 @@ public class CustomAuthenticationStateProvider :
 			new System.Security.Claims.ClaimsIdentity();
 
 		var claimsPrincipal =
-			new System.Security.Claims.ClaimsPrincipal(identity: claimsIdentity);
+			new System.Security.Claims
+			.ClaimsPrincipal(identity: claimsIdentity);
 
-		var authenticationState = new Microsoft.AspNetCore
-			.Components.Authorization.AuthenticationState(user: claimsPrincipal);
+		var authenticationState =
+			new Microsoft.AspNetCore
+			.Components.Authorization
+			.AuthenticationState(user: claimsPrincipal);
 
 		var result =
 			await

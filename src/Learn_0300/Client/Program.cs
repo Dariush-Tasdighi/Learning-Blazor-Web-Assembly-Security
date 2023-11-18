@@ -31,7 +31,7 @@ builder.Services.AddAuthorizationCore(options =>
 builder.Services.AddScoped
 	<Microsoft.AspNetCore.Components
 	.Authorization.AuthenticationStateProvider,
-	Infrastructure.CustomAuthenticationStateProvider>();
+	Providers.CustomAuthenticationStateProvider>();
 
 builder.Services.AddScoped
 	(sp => new System.Net.Http.HttpClient
