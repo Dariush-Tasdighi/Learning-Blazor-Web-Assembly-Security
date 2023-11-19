@@ -51,7 +51,7 @@
 		forecasts =
 			await
 			httpClient.GetFromJsonAsync
-			<WeatherForecast[]>("sample-data/weather.json");
+			<WeatherForecast[]>(requestUri: "sample-data/weather.json");
 	}
 
 	public class WeatherForecast : object
