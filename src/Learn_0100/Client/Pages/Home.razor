@@ -20,10 +20,6 @@ Target Framework Name: @(targetFrameworkName)
 
 @code
 {
-	private string? environmentVersion { get; set; }
-	private string? targetFrameworkName { get; set; }
-	private string? frameworkDescription { get; set; }
-
 	protected override void OnInitialized()
 	{
 		environmentVersion =
@@ -37,4 +33,8 @@ Target Framework Name: @(targetFrameworkName)
 			.GetCustomAttribute<System.Runtime.Versioning.TargetFrameworkAttribute>()?
 			.FrameworkName;
 	}
+
+	private string? environmentVersion { get; set; }
+	private string? targetFrameworkName { get; set; }
+	private string? frameworkDescription { get; set; }
 }

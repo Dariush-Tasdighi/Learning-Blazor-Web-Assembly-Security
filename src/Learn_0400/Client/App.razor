@@ -1,27 +1,7 @@
-﻿@*
-<Router AppAssembly="@typeof(App).Assembly">
-	<Found Context="routeData">
-		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-		<FocusOnNavigate RouteData="@routeData" Selector="h1" />
-	</Found>
-	<NotFound>
-		<PageTitle>Not found</PageTitle>
-		<LayoutView Layout="@typeof(MainLayout)">
-			<p role="alert">Sorry, there's nothing at this address.</p>
-		</LayoutView>
-	</NotFound>
-</Router>
-*@
-
-@* Update _Imports.razor *@
-@*
-	@using Microsoft.AspNetCore.Components.Authorization
- *@
-
-<CascadingAuthenticationState>
-	<Router AppAssembly="@typeof(App).Assembly">
+﻿<CascadingAuthenticationState>
+	<Router AppAssembly="@(typeof(App).Assembly)">
 		<Found Context="routeData">
-			<AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
+			<AuthorizeRouteView RouteData="@(routeData)" DefaultLayout="@(typeof(MainLayout))">
 				<Authorizing>
 					<p>
 						Determining session state, please wait...
@@ -40,11 +20,11 @@
 					}
 				</NotAuthorized>
 			</AuthorizeRouteView>
-			<FocusOnNavigate RouteData="@routeData" Selector="h1" />
+			<FocusOnNavigate RouteData="@(routeData)" Selector="h1" />
 		</Found>
 		<NotFound>
 			<PageTitle>Not found</PageTitle>
-			<LayoutView Layout="@typeof(MainLayout)">
+			<LayoutView Layout="@(typeof(MainLayout))">
 				<p role="alert">
 					Sorry, there's nothing at this address.
 				</p>
