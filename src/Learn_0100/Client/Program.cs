@@ -10,8 +10,8 @@ builder.RootComponents.Add<Microsoft.AspNetCore
 	.Components.Web.HeadOutlet>(selector: "head::after");
 
 // AddScoped() -> using Microsoft.Extensions.DependencyInjection;
-builder.Services.AddScoped(implementationFactory: current =>
-	new System.Net.Http.HttpClient
+builder.Services.AddScoped
+	(implementationFactory: current => new System.Net.Http.HttpClient
 	{
 		BaseAddress = new System.Uri
 			(uriString: builder.HostEnvironment.BaseAddress),

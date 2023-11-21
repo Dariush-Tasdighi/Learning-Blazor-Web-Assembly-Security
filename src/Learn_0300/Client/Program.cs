@@ -34,7 +34,7 @@ builder.Services.AddScoped
 	Providers.CustomAuthenticationStateProvider>();
 
 builder.Services.AddScoped
-	(sp => new System.Net.Http.HttpClient
+	(implementationFactory: current => new System.Net.Http.HttpClient
 	{
 		BaseAddress = new System.Uri
 			(uriString: builder.HostEnvironment.BaseAddress),
