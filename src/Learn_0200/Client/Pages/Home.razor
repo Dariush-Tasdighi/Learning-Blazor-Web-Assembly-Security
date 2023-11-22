@@ -1,8 +1,40 @@
 ﻿@page "/"
+@using System.Reflection
 
 <PageTitle>Home</PageTitle>
 
 <h1>
-	<i class="bi-alarm"></i>
-	Hello, world!
+	Hello, World!
 </h1>
+
+<i class="bi-alarm"></i>
+Welcome to my new app!
+
+<hr />
+
+Environment Version: @(environmentVersion)
+<br />
+Framework Description: @(frameworkDescription)
+<br />
+Target Framework Name: @(targetFrameworkName)
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		environmentVersion =
+			Environment.Version.ToString();
+
+		frameworkDescription =
+			System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription;
+
+		targetFrameworkName =
+			System.Reflection.Assembly.GetEntryAssembly()?
+			.GetCustomAttribute<System.Runtime.Versioning.TargetFrameworkAttribute>()?
+			.FrameworkName;
+	}
+
+	private string? environmentVersion { get; set; }
+	private string? targetFrameworkName { get; set; }
+	private string? frameworkDescription { get; set; }
+}
