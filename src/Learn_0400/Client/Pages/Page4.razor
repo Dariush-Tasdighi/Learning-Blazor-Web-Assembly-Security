@@ -59,10 +59,10 @@
 </h3>
 
 <AuthorizeView Roles="Administrator">
-	<p>User: @context.User</p>
+	<p>User: @(context.User)</p>
 	<p>You have the 'Administrator' role claim.</p>
 	<AuthorizeView Roles="Supervisor" Context="innerContext">
-		<p>User: @innerContext.User</p>
+		<p>User: @(innerContext.User)</p>
 		<p>You have both 'Administrator' and 'Supervisor' role claims.</p>
 	</AuthorizeView>
 </AuthorizeView>
