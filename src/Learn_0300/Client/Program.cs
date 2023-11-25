@@ -13,11 +13,11 @@ builder.RootComponents.Add<Microsoft.AspNetCore
 builder.Services.AddOptions();
 
 // New
-// If we do not have Policy!
+// If we do not have any policy!
 //builder.Services.AddAuthorizationCore();
 
 // New
-// If we have Policy!
+// If we have even one policy!
 builder.Services.AddAuthorizationCore(options =>
 {
 	options.AddPolicy(name: "CanBuy",

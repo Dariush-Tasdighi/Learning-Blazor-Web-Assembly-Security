@@ -5,7 +5,8 @@
 	protected override void OnInitialized()
 	{
 		var returnUrl =
-			Uri.EscapeDataString(stringToEscape: Navigation.Uri);
+			Uri.EscapeDataString
+			(stringToEscape: Navigation.Uri);
 
 		var uri =
 			$"authentication/login?returnUrl={returnUrl}";
