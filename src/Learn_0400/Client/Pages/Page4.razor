@@ -1,4 +1,8 @@
 ﻿@page "/page4"
+@* @attribute [Authorize] *@
+@* @attribute [Authorize(Roles = "Administrator")] *@
+@* @attribute [Authorize(Roles = "Administrator, Supervisor")] *@
+@* @attribute [Authorize(Policy = "CanBuy")] *@
 
 <PageTitle>Page (4)</PageTitle>
 
@@ -34,7 +38,7 @@
 <AuthorizeView>
 	<Authorized>
 		<p>Hello, @(context.User.Identity?.Name)!</p>
-		<p><button @onclick="SecureMethod">Authorized Only Button</button></p>
+		<p><button class="btn btn-primary" @onclick="SecureMethod">Authorized Only Button</button></p>
 	</Authorized>
 	<NotAuthorized>
 		<p>You're not authorized!</p>
@@ -74,6 +78,14 @@
 	Part (7)
 </h3>
 
+<AuthorizeView Policy="CanBuy, CanDelete">
+	<p>You satisfy the 'CanBuy' or 'CanDelete' policy.</p>
+</AuthorizeView>
+
+<h3>
+	Part (8)
+</h3>
+
 <AuthorizeView Policy="CanBuy">
 	<AuthorizeView Policy="CanDelete" Context="innerContext">
 		<p>You satisfy the 'CanBuy' and 'CanDelete' policies.</p>
@@ -81,7 +93,7 @@
 </AuthorizeView>
 
 <h3>
-	Part (8)
+	Part (9)
 </h3>
 
 <AuthorizeView>

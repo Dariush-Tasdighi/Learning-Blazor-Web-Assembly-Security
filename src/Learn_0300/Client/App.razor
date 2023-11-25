@@ -15,10 +15,8 @@
 </Router>
 *@
 
-@* Update _Imports.razor *@
-@*
-	@using Microsoft.AspNetCore.Components.Authorization
- *@
+@* Update File: _Imports.razor *@
+@* @using Microsoft.AspNetCore.Components.Authorization *@
 
 <CascadingAuthenticationState>
 	<Router AppAssembly="@(typeof(App).Assembly)">
@@ -30,7 +28,7 @@
 					</p>
 				</Authorizing>
 				<NotAuthorized>
-					@if (context.User.Identity?.IsAuthenticated != true)
+					@if (context.User.Identity?.IsAuthenticated == false)
 					{
 						<RedirectToLogin />
 					}

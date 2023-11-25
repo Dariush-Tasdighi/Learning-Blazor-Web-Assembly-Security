@@ -8,7 +8,7 @@
 					</p>
 				</Authorizing>
 				<NotAuthorized>
-					@if (context.User.Identity?.IsAuthenticated != true)
+					@if (context.User.Identity?.IsAuthenticated == false)
 					{
 						<RedirectToLogin />
 					}
