@@ -44,8 +44,6 @@
 
 @code
 {
-	private WeatherForecast[]? forecasts;
-
 	protected override async Task OnInitializedAsync()
 	{
 		forecasts =
@@ -53,6 +51,8 @@
 			httpClient.GetFromJsonAsync
 			<WeatherForecast[]>(requestUri: "sample-data/weather.json");
 	}
+
+	private WeatherForecast[]? forecasts;
 
 	public class WeatherForecast : object
 	{

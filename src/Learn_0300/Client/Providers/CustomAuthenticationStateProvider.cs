@@ -8,11 +8,18 @@ public class CustomAuthenticationStateProvider :
 	{
 	}
 
+	//public override System.Threading.Tasks.Task
+	//	<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>
+	//	GetAuthenticationStateAsync()
+	//{
+	//	throw new System.NotImplementedException();
+	//}
+
 	public override async System.Threading.Tasks.Task
 		<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>
 		GetAuthenticationStateAsync()
 	{
-		// Anonymous
+		// Anonymous User
 		var claimsIdentity =
 			new System.Security.Claims.ClaimsIdentity();
 
