@@ -3,7 +3,13 @@
 @* @attribute [Authorize(Roles = "Administrator")] *@
 @* @attribute [Authorize(Roles = "Administrator, Supervisor")] *@
 @* @attribute [Authorize(Policy = "CanBuy")] *@
-@* @attribute [Authorize(Policy = "CanBuy, CanDelete")] *@
+
+@*
+	نکته مهم
+	ها، به شکل ذیل کار نمی‌کنند Policy ،ها Role بر خلاف
+
+	@attribute [Authorize(Policy = "CanBuy, CanDelete")]
+ *@
 
 <PageTitle>Page (4)</PageTitle>
 
@@ -81,7 +87,7 @@
 
 @*
 	نکته مهم
-	ها به شکل ذیل کار نمی‌کند Policy ها Role بر خلاف
+	ها، به شکل ذیل کار نمی‌کنند Policy ،ها Role بر خلاف
 
 	<AuthorizeView Policy="CanBuy, CanDelete">
 		<p>You satisfy the 'CanBuy' or 'CanDelete' policy.</p>
