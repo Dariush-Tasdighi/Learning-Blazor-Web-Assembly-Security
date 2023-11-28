@@ -327,7 +327,7 @@ public class CustomAuthenticationStateProvider :
 
 //			var keyValuePairs =
 //				System.Text.Json.JsonSerializer.Deserialize
-//				<System.Collections.Generic.Dictionary<string, object>>(jsonBytes);
+//				<System.Collections.Generic.Dictionary<string, object>>(utf8Json: jsonBytes);
 
 //			if (keyValuePairs is null)
 //			{

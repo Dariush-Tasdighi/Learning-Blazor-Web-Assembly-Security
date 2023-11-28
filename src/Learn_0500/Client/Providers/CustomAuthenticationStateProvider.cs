@@ -43,7 +43,7 @@ public class CustomAuthenticationStateProvider :
 
 		if (claims is null)
 		{
-			// Anonymous
+			// Anonymous User
 			claimsIdentity =
 				new System.Security.Claims.ClaimsIdentity();
 		}
@@ -114,7 +114,7 @@ public class CustomAuthenticationStateProvider :
 
 			var keyValuePairs =
 				System.Text.Json.JsonSerializer.Deserialize
-				<System.Collections.Generic.Dictionary<string, object>>(jsonBytes);
+				<System.Collections.Generic.Dictionary<string, object>>(utf8Json: jsonBytes);
 
 			if (keyValuePairs is null)
 			{
