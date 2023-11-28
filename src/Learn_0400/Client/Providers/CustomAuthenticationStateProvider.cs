@@ -1,7 +1,6 @@
-﻿using System.Linq;
+﻿//using System.Linq;
 
 namespace Providers;
-//namespace Client.Providers;
 
 /// <summary>
 /// Solution (1)
@@ -42,19 +41,24 @@ public class CustomAuthenticationStateProvider :
 		// **************************************************
 		// **************************************************
 		// **************************************************
+		// Anonymous User
 		// دستور ذیل کار نمی‌کند
 		//var claimsIdentity =
 		//	new System.Security.Claims.ClaimsIdentity();
 
+		// Anonymous User
 		// دستور ذیل کار نمی‌کند
 		//var claimsIdentity =
 		//	new System.Security.Claims.ClaimsIdentity(claims: claims);
 
+		// Authenticated User
 		// دستور ذیل کار می‌کند
+		// "jwt" OR "googooli" OR "magooli" OR ...
 		var claimsIdentity =
 			new System.Security.Claims
 			.ClaimsIdentity(authenticationType: "googooli");
 
+		// Authenticated User
 		// دستور ذیل کار می‌کند
 		//var claimsIdentity =
 		//	new System.Security.Claims.ClaimsIdentity
