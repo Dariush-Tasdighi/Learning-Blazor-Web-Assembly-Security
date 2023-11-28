@@ -92,10 +92,11 @@ public class CustomAuthenticationStateProvider :
 		NotifyAuthenticationStateChanged(task: GetAuthenticationStateAsync());
 	}
 
+
 	/// <summary>
 	/// Created by Mr. Steve Sanderson
 	/// </summary>
-	private static System.Collections.Generic.IEnumerable
+	private static System.Collections.Generic.IList
 		<System.Security.Claims.Claim>? ParseClaimsFromJwtToken(string? jwtToken)
 	{
 		if (string.IsNullOrWhiteSpace(value: jwtToken))
@@ -103,53 +104,67 @@ public class CustomAuthenticationStateProvider :
 			return null;
 		}
 
-		var payload = jwtToken.Split('.')[1];
+		try
+		{
+			var payload =
+				jwtToken.Split(separator: '.')[1];
 
-		var jsonBytes = ParseBase64WithoutPadding(base64: payload);
+			var jsonBytes =
+				ParseBase64WithoutPadding(base64: payload);
 
-		var keyValuePairs = System.Text.Json.JsonSerializer.Deserialize
-			<System.Collections.Generic.Dictionary<string, object>>(jsonBytes);
+			var keyValuePairs =
+				System.Text.Json.JsonSerializer.Deserialize
+				<System.Collections.Generic.Dictionary<string, object>>(jsonBytes);
 
-		if (keyValuePairs is null)
+			if (keyValuePairs is null)
+			{
+				return null;
+			}
+
+			// **************************************************
+			var result =
+				new System.Collections.Generic
+				.List<System.Security.Claims.Claim>();
+
+			foreach (var keyValuePair in keyValuePairs)
+			{
+				var key =
+					keyValuePair.Key;
+
+				var keyValuePairValue =
+					keyValuePair.Value is null ?
+					string.Empty : keyValuePair.Value.ToString();
+
+				string value =
+					string.Empty;
+
+				if (keyValuePairValue is not null)
+				{
+					value =
+						keyValuePairValue.ToString();
+				}
+
+				var claim =
+					new System.Security.Claims
+					.Claim(type: key, value: value);
+
+				result.Add(item: claim);
+			}
+			// **************************************************
+
+			// **************************************************
+			//var result =
+			//	keyValuePairs.Select(current =>
+			//		new System.Security.Claims.Claim
+			//		(current.Key, current.Key.ToString()));
+			// **************************************************
+
+			return result;
+		}
+		catch
 		{
 			return null;
 		}
-
-		// **************************************************
-		var result =
-			new System.Collections.Generic.List
-			<System.Security.Claims.Claim>();
-
-		foreach (var keyValuePair in keyValuePairs)
-		{
-			var key = keyValuePair.Key;
-
-			var keyValuePairValue = keyValuePair.Value is null ?
-				string.Empty : keyValuePair.Value.ToString();
-
-			string value = string.Empty;
-
-			if (keyValuePairValue is not null)
-			{
-				value = keyValuePairValue.ToString();
-			}
-
-			var claim =
-				new System.Security.Claims
-				.Claim(type: key, value: value);
-
-			result.Add(item: claim);
-		}
-		// **************************************************
-
-		// **************************************************
-		//var result =
-		//	keyValuePairs.Select(current =>
-		//		new System.Security.Claims.Claim
-		//		(current.Key, current.Key.ToString()));
-		// **************************************************
-
-		return result;
 	}
 
 	/// <summary>
@@ -172,8 +187,8 @@ public class CustomAuthenticationStateProvider :
 			}
 		}
 
-		var result =
-			System.Convert.FromBase64String(s: base64);
+		var result = System.Convert
+			.FromBase64String(s: base64);
 
 		return result;
 	}
