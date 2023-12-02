@@ -20,32 +20,27 @@ Value 1: @(Value1)
 {
 	private string? Value1 { get; set; }
 
-	protected override void OnInitialized()
-	{
-		base.OnInitialized();
-	}
-
 	private async Task SaveToStorageAsync()
 	{
-		await storageService.SetItemAsync<string?>(key: "Value1", data: Value1);
+		// await storageService.SetItemAsync<string?>(key: "Value1", data: Value1);
 
 		// await storageService.SetItemAsStringAsync(key: "Value1", data: Value1);
 
-		// await storageService.SetItemAsStringAsync(key: nameof(Value1), data: Value1);
+		await storageService.SetItemAsStringAsync(key: nameof(Value1), data: Value1);
 	}
 
 	private async Task LoadFromStorageAsync()
 	{
-		Value1 =
-			await
-			storageService.GetItemAsync<string?>(key: "Value1");
+		// Value1 =
+		// 	await
+		// 	storageService.GetItemAsync<string?>(key: "Value1");
 
 		// Value1 =
 		// 	await
 		// 	storageService.GetItemAsStringAsync(key: "Value1");
 
-		// Value1 =
-		// 	await
-		// 	storageService.GetItemAsStringAsync(key: nameof(Value1));
+		Value1 =
+			await
+			storageService.GetItemAsStringAsync(key: nameof(Value1));
 	}
 }

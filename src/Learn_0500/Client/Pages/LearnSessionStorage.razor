@@ -27,25 +27,25 @@ Value 2: @(Value2)
 
 	private async Task SaveToStorageAsync()
 	{
-		await storageService.SetItemAsync<string?>(key: "Value2", data: Value2);
+		// await storageService.SetItemAsync<string?>(key: "Value2", data: Value2);
 
 		// await storageService.SetItemAsStringAsync(key: "Value2", data: Value2);
 
-		// await storageService.SetItemAsStringAsync(key: nameof(Value2), data: Value2);
+		await storageService.SetItemAsStringAsync(key: nameof(Value2), data: Value2);
 	}
 
 	private async Task LoadFromStorageAsync()
 	{
-		Value2 =
-			await
-			storageService.GetItemAsync<string?>(key: "Value2");
+		// Value2 =
+		// 	await
+		// 	storageService.GetItemAsync<string?>(key: "Value2");
 
 		// Value2 =
 		// 	await
 		// 	storageService.GetItemAsStringAsync(key: "Value2");
 
-		// Value2 =
-		// 	await
-		// 	storageService.GetItemAsStringAsync(key: nameof(Value2));
+		Value2 =
+			await
+			storageService.GetItemAsStringAsync(key: nameof(Value2));
 	}
 }
