@@ -1,0 +1,51 @@
+﻿@page "/learnlocalstorage"
+
+@inject Blazored.LocalStorage.ILocalStorageService storageService
+
+<PageTitle>Learn Local Storage</PageTitle>
+
+<h1>
+	Learn Local Storage
+</h1>
+
+Value 1: @(Value1)
+<br />
+<input type="text" @bind="Value1" @bind:event="oninput" />
+<br />
+<br />
+<button type="button" class="btn btn-primary" @onclick="SaveToStorageAsync">Save to Storage</button>
+<button type="button" class="btn btn-primary" @onclick="LoadFromStorageAsync">Load from Storage</button>
+
+@code
+{
+	private string? Value1 { get; set; }
+
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+	}
+
+	private async Task SaveToStorageAsync()
+	{
+		await storageService.SetItemAsync<string?>(key: "Value1", data: Value1);
+
+		// await storageService.SetItemAsStringAsync(key: "Value1", data: Value1);
+
+		// await storageService.SetItemAsStringAsync(key: nameof(Value1), data: Value1);
+	}
+
+	private async Task LoadFromStorageAsync()
+	{
+		Value1 =
+			await
+			storageService.GetItemAsync<string?>(key: "Value1");
+
+		// Value1 =
+		// 	await
+		// 	storageService.GetItemAsStringAsync(key: "Value1");
+
+		// Value1 =
+		// 	await
+		// 	storageService.GetItemAsStringAsync(key: nameof(Value1));
+	}
+}

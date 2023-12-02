@@ -1,5 +1,10 @@
-using Blazored.LocalStorage;
 using Microsoft.Extensions.DependencyInjection;
+
+// New
+using Blazored.LocalStorage;
+
+// New
+using Blazored.SessionStorage;
 
 var builder =
 	Microsoft.AspNetCore.Components.WebAssembly
@@ -14,6 +19,9 @@ builder.Services.AddOptions();
 
 // New
 builder.Services.AddBlazoredLocalStorage();
+
+// New
+builder.Services.AddBlazoredSessionStorage();
 
 builder.Services.AddAuthorizationCore(options =>
 {
