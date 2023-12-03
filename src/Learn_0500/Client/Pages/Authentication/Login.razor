@@ -1,4 +1,7 @@
-﻿@page "/authentication/login"
+﻿@* New *@
+@* @page "/authentication/login" *@
+@page "/authentication/login/{returnUrl?}"
+
 @inject NavigationManager navigationManager
 @inject Providers.CustomAuthenticationStateProvider customAuthenticationStateProvider
 
@@ -8,10 +11,22 @@
 	Login
 </h1>
 
+Return URL: @(ReturnUrl)
+<br />
+<br />
 <button type="button" class="btn btn-primary" @onclick="LoginAsync">Login</button>
 
 @code
 {
+	/// <summary>
+	/// New
+	/// </summary>
+	[Parameter]
+	public string? ReturnUrl { get; set; }
+
+	/// <summary>
+	/// New
+	/// </summary>
 	public async Task LoginAsync()
 	{
 		string? jwtToken =
@@ -21,10 +36,17 @@
 			await
 			customAuthenticationStateProvider.LoginAsync(jwtToken: jwtToken);
 
-		if(result)
+		if (result)
 		{
+			var url = string.Empty;
+
+			if(string.IsNullOrWhiteSpace(value: ReturnUrl) == false)
+			{
+				url = ReturnUrl;
+			}
+
 			navigationManager.NavigateTo
-				(uri: string.Empty, forceLoad: false);
+				(uri: url, forceLoad: false);
 		}
 	}
 }

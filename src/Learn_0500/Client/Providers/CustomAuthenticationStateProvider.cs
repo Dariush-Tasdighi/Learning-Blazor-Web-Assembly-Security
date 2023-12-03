@@ -34,7 +34,7 @@ public class CustomAuthenticationStateProvider :
 		// New
 		string? jwtToken =
 			await
-			StorageService.GetItemAsync<string>(key: TokenKeyName);
+			StorageService.GetItemAsStringAsync(key: TokenKeyName);
 
 		var claims =
 			ParseClaimsFromJwtToken(jwtToken: jwtToken);
@@ -75,7 +75,7 @@ public class CustomAuthenticationStateProvider :
 	{
 		if (string.IsNullOrWhiteSpace(value: jwtToken) == false)
 		{
-			await StorageService.SetItemAsync(key: TokenKeyName, data: jwtToken);
+			await StorageService.SetItemAsStringAsync(key: TokenKeyName, data: jwtToken);
 
 			NotifyAuthenticationStateChanged(task: GetAuthenticationStateAsync());
 
