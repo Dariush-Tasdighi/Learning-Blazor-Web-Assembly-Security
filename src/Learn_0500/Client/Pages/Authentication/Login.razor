@@ -29,6 +29,8 @@ Return URL: @(ReturnUrl)
 	/// </summary>
 	public async Task LoginAsync()
 	{
+		// HTTP Client -> Backend (Username, Password) -> Request JWT Token
+
 		string? jwtToken =
 			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJJc3N1ZXIgKGlzcykiOiJJc3N1ZXIiLCJJc3N1ZWQgQXQgKGlhdCkiOiIyMDIzLTExLTE4VDA2OjQxOjA5LjE4OVoiLCJFeHBpcmF0aW9uIFRpbWUgKGV4cCkiOiIyMDIzLTExLTE4VDA3OjQxOjA5LjE4OVoiLCJTdWJqZWN0IChzdWIpIjoiU3ViamVjdCIsIlVzZXJuYW1lIChhdWQpIjoiSmF2YUd1aWRlcyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluaXN0cmF0b3IiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiRGFyaXVzaCJ9.FKH-GWnFRjxs5AKhI_ERMxNmg3mtM60xd9-wooevvgU";
 

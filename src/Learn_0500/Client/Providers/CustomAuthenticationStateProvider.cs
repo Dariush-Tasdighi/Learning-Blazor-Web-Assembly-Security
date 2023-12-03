@@ -16,12 +16,14 @@ public class CustomAuthenticationStateProvider :
 	{
 		// New
 		StorageService = storageService;
+		//_storageService = storageService;
 	}
 
 	/// <summary>
 	/// New
 	/// </summary>
 	private Blazored.LocalStorage.ILocalStorageService StorageService { get; }
+	//private readonly Blazored.LocalStorage.ILocalStorageService _storageService;
 
 	public override async System.Threading.Tasks.Task
 		<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>

@@ -38,7 +38,8 @@ builder.Services.AddAuthorizationCore(options =>
 //	Providers.CustomAuthenticationStateProvider>();
 
 // New
-builder.Services.AddScoped<Providers.CustomAuthenticationStateProvider>();
+builder.Services.AddScoped
+	<Providers.CustomAuthenticationStateProvider>();
 builder.Services.AddScoped
 	<Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>
 	(current => current.GetRequiredService<Providers.CustomAuthenticationStateProvider>());
